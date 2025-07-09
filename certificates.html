@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Sirus Cybersecurity</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="certificates.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SIRUS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="certificates.html" class="nav-link active">Certifications</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Certificates Hero -->
+    <section class="cert-hero">
+        <div class="container">
+            <div class="cert-hero-content">
+                <h1>Professional Certifications</h1>
+                <p>Industry-recognized credentials demonstrating expertise in cybersecurity</p>
+                <div class="cert-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Pass Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Grid -->
+    <section class="certificates-section">
+        <div class="container">
+            <div class="certificates-grid">
+                <!-- CISSP Certificate -->
+                <div class="certificate-card" data-cert="cissp">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="CISSP Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>CISSP</h3>
+                                <p>Certified Information Systems Security Professional</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">ISC²</span>
+                                    <span class="cert-date">2023</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('cissp')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('cissp')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                </div>
+
+                <!-- CEH Certificate -->
+                <div class="certificate-card" data-cert="ceh">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="CEH Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>CEH</h3>
+                                <p>Certified Ethical Hacker</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">EC-Council</span>
+                                    <span class="cert-date">2022</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('ceh')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('ceh')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                </div>
+
+                <!-- Security+ Certificate -->
+                <div class="certificate-card" data-cert="secplus">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Security+ Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>Security+</h3>
+                                <p>CompTIA Security+</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">CompTIA</span>
+                                    <span class="cert-date">2021</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('secplus')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('secplus')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+
+                <!-- GCIH Certificate -->
+                <div class="certificate-card" data-cert="gcih">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="GCIH Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>GCIH</h3>
+                                <p>GIAC Certified Incident Handler</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">SANS/GIAC</span>
+                                    <span class="cert-date">2023</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('gcih')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('gcih')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <!-- OSCP Certificate -->
+                <div class="certificate-card" data-cert="oscp">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="OSCP Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>OSCP</h3>
+                                <p>Offensive Security Certified Professional</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">Offensive Security</span>
+                                    <span class="cert-date">2022</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('oscp')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('oscp')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                </div>
+
+                <!-- CISM Certificate -->
+                <div class="certificate-card" data-cert="cism">
+                    <div class="cert-image-container">
+                        <img src="/placeholder.svg?height=300&width=400" alt="CISM Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-info">
+                                <h3>CISM</h3>
+                                <p>Certified Information Security Manager</p>
+                                <div class="cert-details">
+                                    <span class="cert-issuer">ISACA</span>
+                                    <span class="cert-date">2023</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <button class="cert-btn view-btn" onclick="viewCertificate('cism')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="cert-btn verify-btn" onclick="verifyCertificate('cism')">
+                                    <i class="fas fa-check-circle"></i> Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-badge">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Certificate Details</h2>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="/placeholder.svg" alt="Certificate" class="modal-cert-image">
+                <div class="modal-info">
+                    <div class="modal-details">
+                        <h3 id="modalCertName">Certificate Name</h3>
+                        <p id="modalCertDesc">Certificate Description</p>
+                        <div class="modal-meta">
+                            <div class="meta-item">
+                                <strong>Issuer:</strong> <span id="modalIssuer">Issuer</span>
+                            </div>
+                            <div class="meta-item">
+                                <strong>Date Earned:</strong> <span id="modalDate">Date</span>
+                            </div>
+                            <div class="meta-item">
+                                <strong>Credential ID:</strong> <span id="modalCredId">ID</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sirus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="certificates.js"></script>
+</body>
+</html>
