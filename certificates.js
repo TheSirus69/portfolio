@@ -1,81 +1,45 @@
-// Certificate data
+// Certificate data with image paths
 const certificateData = {
-  cissp: {
-    name: "CISSP",
-    fullName: "Certified Information Systems Security Professional",
+  cc: {
+    name: "CC",
+    fullName: "Certified in Cybersecurity",
     issuer: "ISC²",
-    date: "March 2023",
-    credentialId: "CISSP-123456",
+    date: "2025",
+    credentialId: "bc699cdc-4e54-458b-b250-669c69de9910",
+    imagePath: "images/isc2-candidate.png",
     description:
-      "The CISSP certification validates expertise in designing, implementing, and managing cybersecurity programs. This certification demonstrates advanced knowledge in security and risk management, asset security, security architecture, and more.",
-    verifyUrl: "https://www.isc2.org/Certifications/CISSP",
-  },
-  ceh: {
-    name: "CEH",
-    fullName: "Certified Ethical Hacker",
-    issuer: "EC-Council",
-    date: "August 2022",
-    credentialId: "CEH-789012",
-    description:
-      "The CEH certification demonstrates the ability to think and act like a malicious hacker in order to better defend against attacks. This certification covers penetration testing, vulnerability assessment, and ethical hacking methodologies.",
-    verifyUrl: "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/",
-  },
-  secplus: {
-    name: "Security+",
-    fullName: "CompTIA Security+",
-    issuer: "CompTIA",
-    date: "June 2021",
-    credentialId: "COMP001021345678",
-    description:
-      "CompTIA Security+ is a global certification that validates the baseline skills necessary to perform core security functions and pursue an IT security career. It covers network security, compliance, threats and vulnerabilities.",
-    verifyUrl: "https://www.comptia.org/certifications/security",
-  },
-  gcih: {
-    name: "GCIH",
-    fullName: "GIAC Certified Incident Handler",
-    issuer: "SANS/GIAC",
-    date: "January 2023",
-    credentialId: "GCIH-345678",
-    description:
-      "The GCIH certification validates the ability to detect, respond to, and resolve computer security incidents. This certification demonstrates expertise in incident handling, digital forensics, and malware analysis.",
-    verifyUrl: "https://www.giac.org/certification/certified-incident-handler-gcih",
-  },
-  oscp: {
-    name: "OSCP",
-    fullName: "Offensive Security Certified Professional",
-    issuer: "Offensive Security",
-    date: "November 2022",
-    credentialId: "OSCP-901234",
-    description:
-      "The OSCP certification is a hands-on penetration testing certification that requires candidates to successfully attack and penetrate various live machines in a safe lab environment. It demonstrates practical penetration testing skills.",
-    verifyUrl: "https://www.offensive-security.com/pwk-oscp/",
-  },
-  cism: {
-    name: "CISM",
-    fullName: "Certified Information Security Manager",
-    issuer: "ISACA",
-    date: "September 2023",
-    credentialId: "CISM-567890",
-    description:
-      "The CISM certification is designed for individuals who manage, design, oversee and assess an enterprise's information security program. It demonstrates expertise in information security governance, risk management, and incident management.",
-    verifyUrl: "https://www.isaca.org/credentialing/cism",
-  },
+      "Official ISC2 Online Self-Paced Certified in Cybersecurity (CC) Training is a groundbreaking way to prep for certification that uses artificial intelligence to customize your learning journey.",
+    verifyUrl: "https://www.credly.com/badges/bc699cdc-4e54-458b-b250-669c69de9910/public_url",
+  }
 }
 
 // Initialize certificates page
 document.addEventListener("DOMContentLoaded", () => {
+  // Update certificate images with proper paths
+  updateCertificateImages()
+
   // Add loading effect to certificate images
   const certImages = document.querySelectorAll(".cert-image")
   certImages.forEach((img) => {
     img.addEventListener("load", function () {
       this.style.animation = "none"
     })
+
+    // Handle image loading errors
+    img.addEventListener("error", function () {
+      this.src = "images/placeholder-cert.jpg"
+      console.log(`Failed to load certificate image: ${this.src}`)
+    })
   })
 
   // Add click handlers to certificate cards
   const certCards = document.querySelectorAll(".certificate-card")
   certCards.forEach((card) => {
-    card.addEventListener("click", function () {
+    card.addEventListener("click", function (e) {
+      // Don't trigger card click if button was clicked
+      if (e.target.closest(".cert-btn")) {
+        return
+      }
       const certId = this.getAttribute("data-cert")
       viewCertificate(certId)
     })
@@ -85,28 +49,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("certificateModal")
   const closeBtn = document.querySelector(".close")
 
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none"
-  })
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      closeModal()
+    })
+  }
 
   window.addEventListener("click", (event) => {
     if (event.target === modal) {
-      modal.style.display = "none"
+      closeModal()
     }
   })
 
   // Add keyboard navigation
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none"
+    if (event.key === "Escape" && modal && modal.style.display === "block") {
+      closeModal()
     }
   })
 })
 
+// Update certificate images with proper paths
+function updateCertificateImages() {
+  Object.keys(certificateData).forEach((certId) => {
+    const cert = certificateData[certId]
+    const imgElement = document.querySelector(`[data-cert="${certId}"] .cert-image`)
+    if (imgElement) {
+      imgElement.src = cert.imagePath
+      imgElement.alt = `${cert.name} Certificate`
+    }
+  })
+}
+
 // View certificate function
 function viewCertificate(certId) {
   const cert = certificateData[certId]
-  if (!cert) return
+  if (!cert) {
+    console.error(`Certificate data not found for: ${certId}`)
+    return
+  }
 
   const modal = document.getElementById("certificateModal")
   const modalTitle = document.getElementById("modalTitle")
@@ -117,9 +98,14 @@ function viewCertificate(certId) {
   const modalDate = document.getElementById("modalDate")
   const modalCredId = document.getElementById("modalCredId")
 
+  if (!modal || !modalTitle || !modalImage) {
+    console.error("Modal elements not found")
+    return
+  }
+
   // Update modal content
   modalTitle.textContent = cert.fullName
-  modalImage.src = `/placeholder.svg?height=400&width=600&text=${cert.name}+Certificate`
+  modalImage.src = cert.imagePath
   modalImage.alt = `${cert.name} Certificate`
   modalCertName.textContent = cert.fullName
   modalCertDesc.textContent = cert.description
@@ -133,26 +119,56 @@ function viewCertificate(certId) {
   setTimeout(() => {
     modal.style.opacity = "1"
   }, 10)
+
+  // Prevent body scrolling when modal is open
+  document.body.style.overflow = "hidden"
+}
+
+// Close modal function
+function closeModal() {
+  const modal = document.getElementById("certificateModal")
+  if (modal) {
+    modal.style.opacity = "0"
+    setTimeout(() => {
+      modal.style.display = "none"
+      document.body.style.overflow = "auto"
+    }, 300)
+  }
 }
 
 // Verify certificate function
 function verifyCertificate(certId) {
   const cert = certificateData[certId]
-  if (!cert) return
+  if (!cert) {
+    console.error(`Certificate data not found for: ${certId}`)
+    return
+  }
 
   // Create verification popup
   const popup = document.createElement("div")
   popup.className = "verify-popup"
   popup.innerHTML = `
         <div class="verify-content">
-            <h3>Verify Certificate</h3>
-            <p>Click the link below to verify this certificate on the official ${cert.issuer} website:</p>
-            <a href="${cert.verifyUrl}" target="_blank" class="verify-link">
-                <i class="fas fa-external-link-alt"></i>
-                Verify on ${cert.issuer} Website
-            </a>
-            <p class="verify-id">Credential ID: <strong>${cert.credentialId}</strong></p>
-            <button onclick="this.parentElement.parentElement.remove()" class="close-verify">Close</button>
+            <div class="verify-header">
+                <h3><i class="fas fa-certificate"></i> Verify Certificate</h3>
+                <button class="close-verify-btn" onclick="this.closest('.verify-popup').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="verify-body">
+                <div class="cert-info">
+                    <h4>${cert.fullName}</h4>
+                    <p><strong>Issuer:</strong> ${cert.issuer}</p>
+                    <p><strong>Date Earned:</strong> ${cert.date}</p>
+                    <p><strong>Credential ID:</strong> ${cert.credentialId}</p>
+                </div>
+                <p class="verify-instruction">Click the link below to verify this certificate on Credly:</p>
+                <a href="${cert.verifyUrl}" target="_blank" class="verify-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    Verify on Credly
+                </a>
+                <button onclick="this.closest('.verify-popup').remove()" class="close-verify">Close</button>
+            </div>
         </div>
     `
 
@@ -169,17 +185,44 @@ function verifyCertificate(certId) {
         justify-content: center;
         z-index: 3000;
         backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
     `
 
   const verifyContent = popup.querySelector(".verify-content")
   verifyContent.style.cssText = `
         background: var(--accent-color);
-        padding: 2rem;
         border-radius: 15px;
         border: 2px solid var(--primary-color);
-        text-align: center;
-        max-width: 400px;
+        max-width: 500px;
+        width: 90%;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideIn 0.3s ease;
+    `
+
+  const verifyHeader = popup.querySelector(".verify-header")
+  verifyHeader.style.cssText = `
+        background: var(--gradient);
+        color: var(--secondary-color);
+        padding: 1.5rem;
+        border-radius: 13px 13px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    `
+
+  const verifyBody = popup.querySelector(".verify-body")
+  verifyBody.style.cssText = `
+        padding: 2rem;
+        text-align: center;
+    `
+
+  const certInfo = popup.querySelector(".cert-info")
+  certInfo.style.cssText = `
+        background: var(--secondary-color);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-color);
     `
 
   const verifyLink = popup.querySelector(".verify-link")
@@ -194,7 +237,7 @@ function verifyCertificate(certId) {
         text-decoration: none;
         margin: 1rem 0;
         font-weight: bold;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     `
 
   const closeBtn = popup.querySelector(".close-verify")
@@ -209,15 +252,29 @@ function verifyCertificate(certId) {
         transition: all 0.3s ease;
     `
 
+  const closeVerifyBtn = popup.querySelector(".close-verify-btn")
+  closeVerifyBtn.style.cssText = `
+        background: none;
+        border: none;
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+    `
+
   document.body.appendChild(popup)
 
   // Add hover effects
   verifyLink.addEventListener("mouseenter", function () {
     this.style.transform = "translateY(-2px)"
+    this.style.boxShadow = "0 5px 15px rgba(20, 184, 166, 0.3)"
   })
 
   verifyLink.addEventListener("mouseleave", function () {
     this.style.transform = "translateY(0)"
+    this.style.boxShadow = "none"
   })
 
   closeBtn.addEventListener("mouseenter", function () {
@@ -228,6 +285,25 @@ function verifyCertificate(certId) {
   closeBtn.addEventListener("mouseleave", function () {
     this.style.background = "transparent"
     this.style.color = "var(--primary-color)"
+  })
+
+  closeVerifyBtn.addEventListener("mouseenter", function () {
+    this.style.background = "rgba(255, 255, 255, 0.2)"
+  })
+
+  closeVerifyBtn.addEventListener("mouseleave", function () {
+    this.style.background = "none"
+  })
+
+  // Prevent body scrolling
+  document.body.style.overflow = "hidden"
+
+  // Close popup when clicking outside
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.remove()
+      document.body.style.overflow = "auto"
+    }
   })
 }
 
@@ -272,36 +348,123 @@ function loadCertificateImages() {
 // Initialize loading animation
 window.addEventListener("load", loadCertificateImages)
 
-// Add search functionality (bonus feature)
+// Add search functionality
 function addCertificateSearch() {
   const searchContainer = document.createElement("div")
   searchContainer.className = "cert-search"
   searchContainer.innerHTML = `
-        <input type="text" placeholder="Search certificates..." class="search-input">
-        <i class="fas fa-search search-icon"></i>
+        <div class="search-wrapper">
+            <input type="text" placeholder="Search certificates..." class="search-input">
+            <i class="fas fa-search search-icon"></i>
+        </div>
     `
 
-  const certificatesSection = document.querySelector(".certificates-section .container")
-  certificatesSection.insertBefore(searchContainer, certificatesSection.firstChild)
+  // Add search styles
+  searchContainer.style.cssText = `
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  `
+
+  const searchWrapper = searchContainer.querySelector(".search-wrapper")
+  searchWrapper.style.cssText = `
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+  `
 
   const searchInput = searchContainer.querySelector(".search-input")
-  searchInput.addEventListener("input", function () {
-    const searchTerm = this.value.toLowerCase()
-    const cards = document.querySelectorAll(".certificate-card")
+  searchInput.style.cssText = `
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    background: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  `
 
-    cards.forEach((card) => {
-      const certId = card.getAttribute("data-cert")
-      const cert = certificateData[certId]
-      const searchableText = `${cert.name} ${cert.fullName} ${cert.issuer}`.toLowerCase()
+  const searchIcon = searchContainer.querySelector(".search-icon")
+  searchIcon.style.cssText = `
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+  `
 
-      if (searchableText.includes(searchTerm)) {
-        card.style.display = "block"
-      } else {
-        card.style.display = "none"
-      }
+  const certificatesSection = document.querySelector(".certificates-section .container")
+  if (certificatesSection) {
+    certificatesSection.insertBefore(searchContainer, certificatesSection.firstChild)
+
+    searchInput.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase()
+      const cards = document.querySelectorAll(".certificate-card")
+
+      cards.forEach((card) => {
+        const certId = card.getAttribute("data-cert")
+        const cert = certificateData[certId]
+        if (cert) {
+          const searchableText = `${cert.name} ${cert.fullName} ${cert.issuer}`.toLowerCase()
+
+          if (searchableText.includes(searchTerm)) {
+            card.style.display = "block"
+            card.style.animation = "fadeIn 0.3s ease"
+          } else {
+            card.style.display = "none"
+          }
+        }
+      })
     })
-  })
+
+    // Focus styles
+    searchInput.addEventListener("focus", function () {
+      this.style.borderColor = "var(--primary-color)"
+      this.style.boxShadow = "0 0 10px rgba(20, 184, 166, 0.3)"
+    })
+
+    searchInput.addEventListener("blur", function () {
+      this.style.borderColor = "var(--border-color)"
+      this.style.boxShadow = "none"
+    })
+  }
 }
 
 // Initialize search functionality
 document.addEventListener("DOMContentLoaded", addCertificateSearch)
+
+// Add CSS animations
+const style = document.createElement("style")
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+`
+document.head.appendChild(style)
+
+// Console welcome message
+console.log(
+  `
+%c
+ ███████╗██╗██████╗ ██╗   ██╗███████╗
+ ██╔════╝██║██╔══██╗██║   ██║██╔════╝
+ ███████╗██║██████╔╝██║   ██║███████╗
+ ╚════██║██║██╔══██╗██║   ██║╚════██║
+ ███████║██║██║  ██║╚██████╔╝███████║
+ ╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+ 
+ Certificates Page Loaded Successfully!
+ 
+`,
+  "color: #14b8a6; font-family: monospace;",
+)
+
+console.log("%cCertificate functionality ready! 🎓", "color: #14b8a6; font-size: 16px; font-weight: bold;")
