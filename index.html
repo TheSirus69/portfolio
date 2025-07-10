@@ -1,135 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <title>Sirus - Cybersecurity Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="#">CyberSec</a>
-            </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="hero">
-        <div class="hero-content">
-            <h1>I'm a Cybersecurity Professional</h1>
-            <p>Passionate about protecting digital assets and ensuring a secure online environment.</p>
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <img src="placeholder-image.jpg" alt="Your Image">
-            <p>
-                A dedicated cybersecurity enthusiast with a strong foundation in network security, ethical hacking, and
-                incident response. I am committed to staying ahead of emerging threats and implementing proactive
-                security measures.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
                 <i class="fas fa-shield-alt"></i>
-                <p>Network Security</p>
+                <span>SIRUS</span>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-laptop-code"></i>
-                <p>Ethical Hacking</p>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-firewall"></i>
-                <p>Firewall Management</p>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="glitch" data-text="SIRUS">SIRUS</h1>
+                <h2>Cybersecurity Professional</h2>
+                <p>Protecting digital assets through advanced security solutions and threat analysis</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-lock"></i>
-                <p>Cryptography</p>
+            <div class="hero-visual">
+                <div class="security-grid">
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                </div>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-bug"></i>
-                <p>Vulnerability Assessment</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Incident Response</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated cybersecurity professional with expertise in threat detection, vulnerability assessment, and security architecture. My passion lies in protecting organizations from evolving cyber threats through innovative security solutions.</p>
+                    <div class="skills">
+                        <div class="skill-category">
+                            <h3>Technical Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Penetration Testing</span>
+                                <span class="skill-tag">Incident Response</span>
+                                <span class="skill-tag">SIEM</span>
+                                <span class="skill-tag">Vulnerability Assessment</span>
+                                <span class="skill-tag">Network Security</span>
+                                <span class="skill-tag">Malware Analysis</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Tools & Technologies</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Wireshark</span>
+                                <span class="skill-tag">Nmap</span>
+                                <span class="skill-tag">Metasploit</span>
+                                <span class="skill-tag">Burp Suite</span>
+                                <span class="skill-tag">Splunk</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <div class="project-item">
-                <img src="placeholder-project.jpg" alt="Project 1">
-                <h3>Project Title 1</h3>
-                <p>Brief description of the project.</p>
-                <a href="#" class="btn btn-secondary">Learn More</a>
-            </div>
-            <div class="project-item">
-                <img src="placeholder-project.jpg" alt="Project 2">
-                <h3>Project Title 2</h3>
-                <p>Brief description of the project.</p>
-                <a href="#" class="btn btn-secondary">Learn More</a>
-            </div>
-            <div class="project-item">
-                <img src="placeholder-project.jpg" alt="Project 3">
-                <h3>Project Title 3</h3>
-                <p>Brief description of the project.</p>
-                <a href="#" class="btn btn-secondary">Learn More</a>
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-preview">
+                <p>View my professional cybersecurity certifications and credentials</p>
+                <a href="certificates.html" class="btn btn-primary cert-btn">
+                    <i class="fas fa-certificate"></i>
+                    View All Certificates
+                </a>
+                <div class="cert-count">
+                    <span class="cert-number">8+</span>
+                    <span class="cert-label">Professional Certifications</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="cert-preview">
-            <p>View my professional cybersecurity certifications and credentials</p>
-            <a href="certificates.html" class="btn btn-primary cert-btn">
-                <i class="fas fa-certificate"></i>
-                View All Certificates
-            </a>
-            <div class="cert-count">
-                <span class="cert-number">8+</span>
-                <span class="cert-label">Professional Certifications</span>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Network Security Monitor</h3>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <p>Real-time network monitoring system with threat detection capabilities using Python and machine learning algorithms.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scapy</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Vulnerability Scanner</h3>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <p>Automated vulnerability assessment tool for web applications with comprehensive reporting features.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Requests</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                        <span class="tech-tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SIEM Dashboard</h3>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <p>Custom SIEM dashboard for log analysis and security event correlation with real-time alerting.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Malware Analysis Lab</h3>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <p>Isolated environment for malware analysis with automated behavioral analysis and reporting.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">VirtualBox</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Wireshark</span>
+                        <span class="tech-tag">YARA</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Security Analyst</h3>
+                        <h4>CyberTech Solutions</h4>
+                        <span class="timeline-date">2022 - Present</span>
+                        <ul>
+                            <li>Led incident response team for critical security breaches</li>
+                            <li>Implemented SIEM solutions reducing detection time by 60%</li>
+                            <li>Conducted penetration testing for enterprise clients</li>
+                            <li>Developed security policies and procedures</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Cybersecurity Specialist</h3>
+                        <h4>SecureNet Corp</h4>
+                        <span class="timeline-date">2020 - 2022</span>
+                        <ul>
+                            <li>Performed vulnerability assessments and security audits</li>
+                            <li>Monitored network traffic for suspicious activities</li>
+                            <li>Collaborated with development teams on secure coding practices</li>
+                            <li>Maintained and updated security documentation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Junior Security Analyst</h3>
+                        <h4>InfoSec Partners</h4>
+                        <span class="timeline-date">2019 - 2020</span>
+                        <ul>
+                            <li>Assisted in security incident investigations</li>
+                            <li>Performed log analysis and threat hunting</li>
+                            <li>Supported security awareness training programs</li>
+                            <li>Maintained security tools and systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2023 Cybersecurity Portfolio</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>sirus@cybersec.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/sirus</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>github.com/sirus</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Available for Remote Work</span>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sirus. All rights reserved.</p>
+        </div>
     </footer>
-</body>
 
+    <script src="script.js"></script>
+</body>
 </html>
