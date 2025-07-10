@@ -168,10 +168,12 @@
   padding: 1.5rem;
   opacity: 0;
   transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .certificate-card:hover .cert-overlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .cert-info h3 {
@@ -206,6 +208,8 @@
 .cert-actions {
   display: flex;
   gap: 0.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 .cert-btn {
@@ -218,6 +222,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  z-index: 11;
+}
+
+.cert-btn:hover {
+  transform: translateY(-2px);
 }
 
 .view-btn {
@@ -226,8 +236,7 @@
 }
 
 .view-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+  box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
 }
 
 .verify-btn {
@@ -237,8 +246,19 @@
 }
 
 .verify-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background: var(--purple-accent);
+  color: var(--secondary-color);
+  border-color: var(--purple-accent);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Make sure buttons are clickable */
+.cert-overlay .cert-actions {
+  pointer-events: auto;
+}
+
+.cert-overlay .cert-btn {
+  pointer-events: auto;
 }
 
 .cert-badge {
